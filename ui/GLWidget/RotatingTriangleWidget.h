@@ -2,9 +2,8 @@
 #define ROTATING_TRIANGLE_WIDGET_H
 
 #include <QOpenGLFunctions_3_3_Core>
-#include <QOpenGLWidget>
-#include <QTime>
-#include <QTimer>
+#include <QtOpenGLWidgets/QOpenGLWidget>
+#include <QElapsedTimer>
 
 class RotatingTriangleWidget final : public QOpenGLWidget,
                                      protected QOpenGLFunctions_3_3_Core {
@@ -25,7 +24,7 @@ private slots:
 
 private:
     QTimer *animationTimer; // 动画定时器
-    QTime frameTime; // 用于计算时间
+    QElapsedTimer frameTime; // 用于计算时间
     float rotationAngle; // 当前旋转角度
 
     // 着色器程序相关的变量

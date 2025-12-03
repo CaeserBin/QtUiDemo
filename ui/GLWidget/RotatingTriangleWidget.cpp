@@ -1,6 +1,7 @@
 #include "RotatingTriangleWidget.h"
 #include <QDebug>
 #include <cmath>
+#include <QTimer>
 
 // 顶点着色器源码 - 非常简单的版本
 const char *vertexShaderSource = R"(
@@ -46,7 +47,7 @@ RotatingTriangleWidget::RotatingTriangleWidget(QWidget *parent) :
             &RotatingTriangleWidget::updateAnimation);
 
     // 设置更新频率：每秒60帧
-    animationTimer->start(16); // 约60 FPS
+    animationTimer->start(4); // 约60 FPS
 
     // 开始计时
     frameTime.start();
@@ -122,7 +123,7 @@ void RotatingTriangleWidget::initializeGL() {
 
     // 颜色属性
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
-                          (void *) (3 * sizeof(float)));
+                          reinterpret_cast<void *>(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
     // 解绑VBO和VAO
