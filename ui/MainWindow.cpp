@@ -10,7 +10,6 @@
 #include <iostream>
 
 #include <QTimer>
-#include "GLWidget/RotatingTriangleWidget.h"
 #include "ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
