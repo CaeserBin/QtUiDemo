@@ -19,11 +19,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connectSlot();
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow() {
+    delete ui;
+    delete m_timer;
+}
 
 void MainWindow::init() {
     m_timer = new QTimer(this);
-    // m_timer->start(100);
+    m_timer->start(100);
 }
 
 void MainWindow::connectSlot() {

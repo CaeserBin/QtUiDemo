@@ -31,7 +31,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QTimer *m_timer;
+    QTimer *m_timer{};
 };
 
 #endif // MAIN_WINDOW_H
