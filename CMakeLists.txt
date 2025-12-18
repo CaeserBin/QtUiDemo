@@ -4,6 +4,7 @@ project(UiDemo)
 set(CMAKE_CXX_STANDARD 26)
 
 add_subdirectory(ui)
+add_subdirectory(test)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
