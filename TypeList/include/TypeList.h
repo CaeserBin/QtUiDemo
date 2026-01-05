@@ -19,12 +19,11 @@ using TL = TypeList<Ts...>;
 using IntList = TypeList<int, float, double>;
 using EmptyList = TypeList<>;
 
-template<typename List>
-struct Size;
-
 /******************************************************************************/
 /***************************** 获取列表大小 ***********************************/
 /*****************************************************************************/
+template<typename List>
+struct Size;
 
 /// template<typename...> class List 这是一个模板模板参数，表示 List
 /// 是一个可以接受任意数量类型参数的模板。
@@ -34,7 +33,6 @@ struct Size;
 /// struct Size<List<Ts...>>是一个部分特化，专门处理 List 模板实例化后的类型
 ///
 /// sizeof...(Ts) 计算 Ts 中的类型数量，并将其作为std::integral_constant的值
-
 
 template<template<typename...> class List, typename... Ts>
 struct Size<List<Ts...>> : std::integral_constant<std::size_t, sizeof...(Ts)> {
@@ -176,7 +174,4 @@ struct Contains<List<U, Ts...>, T>
 // static_assert(Contains<MyList, float>::value == true);
 // static_assert(Contains<MyList, char>::value == false);
 
-// 类型分发
-// 编译期工厂
-//
 #endif // TYPE_LIST_H
