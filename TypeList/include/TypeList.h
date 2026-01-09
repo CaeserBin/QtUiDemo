@@ -6,6 +6,7 @@
 #ifndef TYPE_LIST_H
 #define TYPE_LIST_H
 #include <cstddef>
+#include <memory>
 
 // 最简单的类型列表
 template<typename... Ts>
@@ -173,5 +174,28 @@ struct Contains<List<U, Ts...>, T>
 // using MyList = TypeList<int, float, double>;
 // static_assert(Contains<MyList, float>::value == true);
 // static_assert(Contains<MyList, char>::value == false);
+
+/******************************************************************************/
+/******************************* 简化智能指针 *********************************/
+/******************************************************************************/
+
+template<typename T>
+using SP = std::shared_ptr<T>;
+
+template<typename T>
+using UP = std::unique_ptr<T>;
+
+template<typename T>
+using WP = std::weak_ptr<T>;
+
+template<typename T, typename... Ts>
+SP<T> makeSP(Ts &&...args) {
+    return std::make_shared<T>(std::forward<Ts>(args)...);
+}
+
+template<typename T, typename... Ts>
+UP<T> makeUP(Ts &&...args) {
+    return std::make_unique<T>(std::forward<Ts>(args)...);
+}
 
 #endif // TYPE_LIST_H
